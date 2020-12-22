@@ -1,3 +1,4 @@
+[Discussion Post (created on 22/11/2020 at 13:54)](https://leetcode.com/problems/smallest-range-ii/discuss/982409/Golang-Easy-Sort-Solution-(nlogn))  
 <h2>910. Smallest Range II</h2><h3>Medium</h3><hr><div><p>Given an array <code>A</code> of integers, for each integer <code>A[i]</code> we need to choose <strong>either&nbsp;<code>x = -K</code>&nbsp;or <code>x = K</code></strong>, and add <code>x</code> to <code>A[i] <strong>(only once)</strong></code>.</p>
 
 <p>After this process, we have some array <code>B</code>.</p>
