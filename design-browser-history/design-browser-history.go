@@ -11,31 +11,36 @@ func Constructor(homepage string) BrowserHistory {
 ​
 func (this *BrowserHistory) Visit(url string)  {
     // Remove forward history
-    this.arr = this.arr[:this.idx + 1]
-    this.arr = append(this.arr, url)
     this.idx += 1
+    this.arr = this.arr[:this.idx]
+    this.arr = append(this.arr, url)
 }
 ​
 ​
 func (this *BrowserHistory) Back(steps int) string {
-    if steps > this.idx {
-        this.idx = 0
-        return this.arr[0]
-    }
-    this.idx -= steps
+    this.idx = Max(this.idx - steps, 0)
     return this.arr[this.idx]
 }
 ​
 ​
 func (this *BrowserHistory) Forward(steps int) string {
-    if steps > len(this.arr) - this.idx - 1 {
-        this.idx = len(this.arr) - 1
-        return this.arr[this.idx]
-    }
-    this.idx += steps
+    this.idx = Min(len(this.arr) - 1, this.idx + steps)
     return this.arr[this.idx]
 }
 ​
+func Max (x int, y int) int {
+    if x > y {
+        return x
+    }
+    return y
+}
+​
+func Min (x int, y int) int {
+    if x < y {
+        return x
+    }
+    return y
+}
 ​
 /**
  * Your BrowserHistory object will be instantiated and called as such:
