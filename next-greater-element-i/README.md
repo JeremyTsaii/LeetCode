@@ -1,3 +1,4 @@
+[Discussion Post (created on 4/1/2021 at 20:10)](https://leetcode.com/problems/next-greater-element-i/discuss/?currentPage=1&orderBy=most_votes&query=)  
 <h2>496. Next Greater Element I</h2><h3>Easy</h3><hr><div><p>You are given two integer arrays <code>nums1</code> and <code>nums2</code> both of <strong>unique</strong> elements, where <code>nums1</code> is a subset of <code>nums2</code>.</p>
 
 <p>Find all the next greater numbers for <code>nums1</code>'s elements in the corresponding places of <code>nums2</code>.</p>
