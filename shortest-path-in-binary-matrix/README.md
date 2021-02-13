@@ -1,3 +1,4 @@
+[Discussion Post (created on 13/1/2021 at 10:52)](https://leetcode.com/problems/shortest-path-in-binary-matrix/submissions/)  
 <h2>1091. Shortest Path in Binary Matrix</h2><h3>Medium</h3><hr><div><p>In an N by N square grid, each cell is either empty (0) or blocked (1).</p>
 
 <p>A&nbsp;<em>clear&nbsp;path from top-left to bottom-right</em>&nbsp;has length <code>k</code> if and only if it is composed of cells <code>C_1, C_2, ..., C_k</code>&nbsp;such that:</p>
