@@ -17,5 +17,4 @@ class Solution:
         while freqs and idle > 0:
             idle -= min(freqs.pop(), maximum - 1)
         idle = max(0, idle)
-        
         return idle + len(tasks)
