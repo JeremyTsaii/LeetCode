@@ -1,8 +1,8 @@
 class Solution:
     def longestOnes(self, A: List[int], K: int) -> int:
-        start, end = 0, 1
+        start, end = 0, 0
         maxLen = 0
-        used = 0 if A[0] else 1
+        used = 0
         
         while start < len(A) and end < len(A):
             if A[end] == 0:
