@@ -6,33 +6,7 @@ class Solution {
             set.add(s.substring(i, i + k));
         }
         
-        List<String> perms = permutations(k);
-        
-        for (String p : perms) {
-            if (!set.contains(p)) {
-                return false;
-            }
-        }
-        
-        return true;
+        return set.size() == Math.pow(2, k);
     }
     
-    private List<String> permutations(int k) {
-        List<String> output = new ArrayList<>();
-
-        if (k == 1) {
-            output.add("1");
-            output.add("0");
-            return output;
-        }
-        
-        List<String> next = permutations(k - 1);
-        
-        for (String str : next) {
-            output.add(str + "1");
-            output.add(str + "0");
-        }
-        
-        return output;
-    }
 }
