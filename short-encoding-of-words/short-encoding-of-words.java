@@ -1,26 +1,35 @@
+class TrieNode {
+    TrieNode[] children = new TrieNode[26];
+    Boolean empty = true;
+}
+
 class Solution {
     public int minimumLengthEncoding(String[] words) {        
-        Arrays.sort(words, (String s1, String s2) -> s1.length() - s2.length());
+        TrieNode trie = new TrieNode();
+        int count = 1;
         
-        for (int i = 0; i < words.length; i++) {
-            for (int j = i + 1; j < words.length; j++) {
-                String first = words[i];
-                String second = words[j];
-                if (first.equals(second.substring(second.length()-first.length()))) {
-                    words[i] = "";
-                    break;
+        for (String word : words) {
+            TrieNode cur = trie;
+            Boolean newWord = false;
+            
+            for (int i = word.length() - 1; i >= 0; i--) {
+                int c = word.charAt(i) - 'a';
+                if (cur.empty && !newWord) {
+                     count -= word.length() - i;
                 }
+                if (cur.children[c] == null) {
+                    cur.children[c] = new TrieNode();
+                    newWord = true;
+                    cur.empty = false;
+                }
+                cur = cur.children[c];
+            }
+            
+            if (newWord) {
+                count += word.length() + 1;
             }
         }
         
-        int len = 0;
-        int num = 0;
-        for (String s : words) {
-            if (!s.isEmpty()) {
-                len += s.length();
-                num += 1;
-            }
-        }
-        return num + len;
+        return count;
     }
 }
