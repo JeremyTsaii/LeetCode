@@ -37,25 +37,25 @@ class Solution {
     private List<TreeNode> getDepthNodes(TreeNode root, int depth) {
         Deque<TreeNode> q = new ArrayDeque<>();
         q.add(root);
-        Deque<Integer> levels = new ArrayDeque<>();
-        levels.add(1);
         
         List<TreeNode> output = new ArrayList<>();
-        
-        while(!q.isEmpty()) {
-            TreeNode node = q.pollFirst();
-            int level = levels.pollFirst();
-            
-            if (level == depth) {
-                output.add(node);
-            }
-            
-            for (TreeNode child : new TreeNode[]{node.left, node.right}) {
-                if (child != null) {
-                    q.addLast(child);
-                    levels.addLast(level + 1);
+        int d = 1;
+        while(d <= depth) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = q.pollFirst();
+
+                if (d == depth) {
+                    output.add(node);
+                }
+
+                for (TreeNode child : new TreeNode[]{node.left, node.right}) {
+                    if (child != null) {
+                        q.addLast(child);
+                    }
                 }
             }
+            d++;
         }
         
         return output;
