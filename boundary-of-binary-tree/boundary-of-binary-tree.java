@@ -16,53 +16,36 @@
 class Solution {
     List<Integer> output = new ArrayList<>();
     public List<Integer> boundaryOfBinaryTree(TreeNode root) {
-        if (root == null) {
-            return output;
+        List<Integer> output = new ArrayList<>();
+        
+        if (root != null) {
+            output.add(root.val);
+            traverse(root.left, output, true, false);
+            traverse(root.right, output, false, true);
         }
-        
-        output.add(root.val);
-        
-        leftBound(root.left);
-        leaves(root.left);
-        leaves(root.right);
-        rightBound(root.right);
         
         return output;
     }
     
-    public void leftBound(TreeNode root) {
-        if (root == null || (root.left == null && root.right == null)) {
-            return;
-        }
-        output.add(root.val);
-        if (root.left == null) {
-            leftBound(root.right);
-        } else {
-            leftBound(root.left);
-        }
-    }
-    
-    public void rightBound(TreeNode root) {
-        if (root == null || (root.left == null && root.right == null)) {
-            return;
-        }
-        if (root.right == null) {
-            rightBound(root.left);
-        } else {
-            rightBound(root.right);
-        }
-        output.add(root.val);
-    }
-    
-    public void leaves(TreeNode root) {
+    public void traverse(TreeNode root, List<Integer> arr, boolean left, boolean right) {
         if (root == null) {
             return;
         }
         if (root.left == null && root.right == null) {
-            output.add(root.val);
+            arr.add(root.val);
             return;
         }
-        leaves(root.left);
-        leaves(root.right);
+        
+        if (left) {
+            arr.add(root.val);
+        }
+        
+        traverse(root.left, arr, root.left != null && left, root.right == null && right);
+        traverse(root.right, arr, root.left == null && left, root.right != null && right);
+        
+        if (right) {
+            arr.add(root.val);
+        }
+        
     }
 }
