@@ -11,11 +11,8 @@ class Solution {
     }
     
     public int expand(int start, int end, String s) {
-        if (end >= s.length()) {
-            return 0;
-        }
-        
         int count = 0;
+        
         while(start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)) {
             count++;
             start--;
