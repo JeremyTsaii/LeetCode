@@ -5,14 +5,14 @@ class Solution {
         
         for (int i : nums) {
             if (!seen[i]) {
-                int count = 0;
-                int start = nums[i];
-                boolean started = false;
-                while(start != nums[i] || !started) {
-                    started = true;
-                    start = nums[start];
+                int count = 1;
+                int next = nums[i];
+                seen[i] = true;
+                
+                while(next != i) {
+                    seen[next] = true;
                     count++;
-                    seen[start] = true;
+                    next = nums[next];
                 }
                 max = Math.max(count, max);
             }
