@@ -3,10 +3,6 @@ class Solution {
         Arrays.sort(slots1, (a, b) -> (a[0] - b[0]));
         Arrays.sort(slots2, (a, b) -> (a[0] - b[0]));
         
-        // System.out.println(Arrays.deepToString(slots1));
-        // System.out.println(Arrays.deepToString(slots2));
-
-        
         List<Integer> output = new ArrayList<>();
         
         int i1 = 0, i2 = 0;
@@ -22,7 +18,7 @@ class Solution {
             if (overlap >= duration) {
                 output.add(start);
                 output.add(start + duration);
-                break;
+                return output;
             } else if (s1[1] > s2[1]) {
                 i2++;
             } else {
