@@ -15,29 +15,33 @@
  */
 class Solution {
     int count;
-    Set<TreeNode> covered;
     
     public int minCameraCover(TreeNode root) {
         count = 0;
-        covered = new HashSet<>();
-        covered.add(null);
         
-        dfs(root, null);
+        if (dfs(root) == 0) {
+            count++;
+        }
+        
         return count;
     }
     
-    public void dfs(TreeNode node, TreeNode parent) {
-        if (node != null) {
-            dfs(node.left, node);
-            dfs(node.right, node);
-            
-            if ((parent == null && !covered.contains(node)) || !covered.contains(node.left) || !covered.contains(node.right)) {
-                count++;
-                covered.add(node);
-                covered.add(parent);
-                covered.add(node.left);
-                covered.add(node.right);
-            }
+    public int dfs(TreeNode node) {
+        if (node == null) {
+            return 1;
         }
+        
+        int left = dfs(node.left);
+        int right = dfs(node.right);
+        
+
+        if (left == 0 || right == 0) {
+            count++;
+            return 2;
+        }
+        if (left == 2 || right == 2) {
+            return 1;
+        }
+        return 0;
     }
 }
