@@ -4,8 +4,8 @@ class Solution:
         
         total = 0
         count = 0
-        for i in range(len(nums)):
-            total += nums[i]
+        for n in nums:
+            total += n
             if total - k in dic:
                 count += dic[total - k]
             dic[total] = dic.get(total, 0) + 1
