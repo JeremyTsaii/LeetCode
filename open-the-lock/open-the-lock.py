@@ -1,6 +1,6 @@
 class Solution:
     def openLock(self, deadends: List[str], target: str) -> int:
-        dead = set([d for d in deadends])
+        dead = set(deadends)
         if "0000" in dead:
             return -1
             
@@ -18,7 +18,6 @@ class Solution:
 
                 if comb == target:
                     return count
-
 
                 for neighbor in self.getNeighbors(comb):
                     if neighbor not in visited and neighbor not in dead:
